@@ -96,7 +96,6 @@
             "@auto-scripts"
         ],
         "conmpile": [
-            "yarn watch",
             "php bin/console doctrine:mifration:migrate"
         ]
     },
