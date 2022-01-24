@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+
+        <div class="border border-secondary border-3 rounded my-3 py-2 px-2">
+            {% for thread in threadView %}
+                <h3>{{ thread.subcategory.name }}</h3>
+                <h4>{{ thread.subject }}</h4>
+
+                {% if thread.posts|length>0 %}
+                    {% for post in thread.posts %}
+                        <div class="border border-secondary border-2 rounded my-3 py-2 px-2">
+                            <h5>{{ post.user.email }}</h5>
+                            <h6>{{ post.createdAt|date('H:s d-m-Y') }}</h6>
+                            <p>{{ post.content }}</p>
+                            <div>
+                                <a href="{{ path('upvote_add', {'id' : post.id}) }}" class="text-decoration-none mx-2 btn btn-outline-dark" title="Upvote"><i class="fas fa-arrow-up"></i> {{ post.upvote }}</a>
+                                <a href="{{ path('downvote_add', {'id' : post.id}) }}" class="text-decoration-none mx-2 btn btn-outline-dark" title="Downvote"><i class="fas fa-arrow-down"></i> {{ post.downvote }}</a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <div class="border border-secondary border-2 rounded my-3 py-2 px-2">
+                        <p>No post avalaible to show.</p>
+                    </div>
+                {% endif %}
+
+                {% if app.user %}
+                    <a class="btn btn-dark mt-3" href="{{ path('post_add') }}">{{ 'post.add'|trans }}</a>
+                {% endif %}
+
+            {% endfor %}
+        </div>
+
+    </div>
+{% endblock %}

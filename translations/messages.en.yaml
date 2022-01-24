@@ -1,0 +1,17 @@
+
+home:
+  title: 'Symfony-Exam-Forum'
+  login: 'Login'
+  register: 'Register'
+  logout: 'Logout'
+  menu:
+    category: 'Category'
+    post: 'Post by %email%'
+category:
+  add: 'Add Category'
+subcategory:
+  add: 'Add Subcategory'
+thread:
+  add: 'Add Thread'
+post:
+  add: 'Add Post'

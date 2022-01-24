@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        {% if app.user %}
+            <a class="btn btn-dark mt-3" href="{{ path('subcategory_add') }}">{{ 'subcategory.add'|trans }}</a>
+        {% endif %}
+
+        <div class="border border-secondary border-3 rounded my-3 py-2 px-2">
+            <h3>{{ categoryView.name }}</h3>
+            <p>{{ categoryView.description }}</p>
+
+            {% if categoryView.subcategories|length>0 %}
+                {% for subcategory in categoryView.subcategories %}
+                    <div class="border border-secondary border-2 rounded my-3 py-2 px-2">
+                        <h4>{{ subcategory.name }}</h4>
+                        <p>{{ subcategory.description|slice(0, 150) ~ '...' }}</p>
+                        <a class="btn btn-outline-dark" href="{{ path('subcategory_view', {'id': subcategory.id}) }}">View Thread</a>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <div class="border border-secondary border-2 rounded my-3 py-2 px-2">
+                    <p>No subcategory avalaible to show.</p>
+                </div>
+            {% endif %}
+
+        </div>
+
+    </div>
+{% endblock %}

@@ -1,0 +1,25 @@
+<div class="sticky-top">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand ms-3" href="{{ path('home_index') }}"><i class="far fa-comment-dots"></i>  {{ 'home.title'|trans }}</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link" href="{{ path('category_index') }}">{{ 'home.menu.category'|trans }}<span class="sr-only">(current)</span></a>
+                {% if app.user %}
+                <a class="nav-item nav-link" href="{{ path('post_view_by_user', {'id': app.user.id}) }}">{{ 'home.menu.post'|trans({'%email%' : app.user.email }) }}</a>
+                {% endif %}
+
+            </div>
+        </div>
+        <div class="navbar-nav float-end me-3">
+            {% if app.user %}
+                <a class="btn btn-light" href="/logout">{{ 'home.logout'|trans }}</a>
+            {% else %}
+                <a class="btn btn-light me-3" href="/login">{{ 'home.login'|trans }}</a>
+                <a class="btn btn-light" href="/register">{{ 'home.register'|trans }}</a>
+            {% endif %}
+        </div>
+    </nav>
+</div>
