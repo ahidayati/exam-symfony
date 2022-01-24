@@ -86,40 +86,36 @@ class PostController extends AbstractController
     public function addUpvote(int $id, Request $request): Response
     {
         $user = $this->getUser();
+        $postEntity = $this->postRepository->find($id);
 
         if($user === null) {
-            $this->redirectToRoute('/login');
+            $this->redirectToRoute('app_login');
         } else {
-
-            $postEntity = $this->postRepository->find($id);
             $postEntity->setUpVote($postEntity->getUpVote()+1);
 
             $this->em->persist($postEntity);
             $this->em->flush();
-
-            return $this->redirectToRoute('thread_view', ['id' => $postEntity->getThread()->getId()]);
         }
 
+        return $this->redirectToRoute('thread_view', ['id' => $postEntity->getThread()->getId()]);
     }
 
     #[Route('/add-downvote/{id}', name: 'downvote_add')]
     public function addDownvote(int $id, Request $request): Response
     {
         $user = $this->getUser();
+        $postEntity = $this->postRepository->find($id);
 
         if($user === null) {
-            $this->redirectToRoute('/login');
+            $this->redirectToRoute('app_login');
         } else {
-
-            $postEntity = $this->postRepository->find($id);
             $postEntity->setDownVote($postEntity->getDownVote()+1);
 
             $this->em->persist($postEntity);
             $this->em->flush();
-
-            return $this->redirectToRoute('thread_view', ['id' => $postEntity->getThread()->getId()]);
         }
 
+        return $this->redirectToRoute('thread_view', ['id' => $postEntity->getThread()->getId()]);
     }
 
     #[Route('/delete/{id}', name: 'post_delete')]
