@@ -85,6 +85,7 @@
         "symfony/polyfill-php72": "*"
     },
     "scripts": {
+        "postinstall": "encore production --progress",
         "auto-scripts": {
             "cache:clear": "symfony-cmd",
             "assets:install %PUBLIC_DIR%": "symfony-cmd"
@@ -95,7 +96,7 @@
         "post-update-cmd": [
             "@auto-scripts"
         ],
-        "conmpile": [
+        "compile": [
             "php bin/console doctrine:mifration:migrate"
         ]
     },
