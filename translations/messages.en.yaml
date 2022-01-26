@@ -1,6 +1,6 @@
 
 home:
-  title: 'Symfony-Exam-Forum'
+  title: 'Symfony-Forum'
   login: 'Login'
   register: 'Register'
   logout: 'Logout'

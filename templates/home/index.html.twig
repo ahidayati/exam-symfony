@@ -3,9 +3,38 @@
 {% block title %}Home{% endblock %}
 
 {% block body %}
-    <div class="container d-flex justify-content-center">
-        <div class="col-6 my-5 py-5">
-            <h1>Get your questions answered by random people on the internet! 😁 </h1>
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="col-12 my-5 pt-2">
+                <h1>Get your questions answered by random people on the internet! 😁 </h1>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+
+                <p>Hello!</p>
+                <p class="lh-base">This is my attempt to create a CRUD (Create, Read, Update, Delete) on database with Symfony 5 & PHP 8. <br>
+                    You can add, edit, delete any of the data, I have the original database so I can reset it anytime. You can add Category/Subcategory/Thread/Post and Up Vote/Down Vote while you logged in and you can delete your post. <br>
+                    However, the free Heroku plan that I'm using gives <i>limited number of SQL queries per hour</i>. So if you lose connection to the database, you may have surpassed the limit and you have to wait another hour to be able to access the database. <br>
+                    If you want to log in without registering:<br>
+                    email: test1@mail.com<br>
+                    password: pomme1<br>
+                    You can find the code source on my <a class="text-dark" href="https://github.com/ahidayati/exam-symfony">GitHub Repo</a>.
+                </p>
+                <p>Cheers,<br>Annisa</p>
+
+            </div>
+            <div class="col-6">
+                <p>Features to add:</p>
+                    <ul>
+                        <li>Style the form</li>
+                        <li>Edit on Thread and Post by User</li>
+                        <li>Delete on Thread and Post by User</li>
+                        <li>Add, Edit, Delete on Category and Subcategory by Admin</li>
+                        <li>Reset password if password is forgotten</li>
+                    </ul>
+            </div>
         </div>
     </div>
 {% endblock %}
